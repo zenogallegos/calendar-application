@@ -68,15 +68,10 @@ $(function () {
       input: userInputField.val(),
     };
 
-    if (hourCont.input === "") {
-      return;
-    }
-
     console.log(
       hourCont.hour + " Input Description:  " + "'" + hourCont.input + "'"
     );
     localStorage.setItem(hourCont.hour, JSON.stringify(hourCont.input));
-
   });
 
   // TODO: Add code to apply the past, present, or future class to each time
@@ -86,33 +81,32 @@ $(function () {
   // current hour in 24-hour time?
 
   function blockColor() {
-
     for (let i = 6; i <= 22; i++) {
-        if (currentDay.$H === i) {
-          hours[i - 6].addClass('present');
-        } else if (currentDay.$H > i) {
-          hours[i - 6].addClass('past');
-        } else if (currentDay.$H < i) {
-          hours[i - 6].addClass('future');
-          console.log(hours[i]);
-        };
-      };
-  };
+      if (currentDay.$H === i) {
+        hours[i - 6].addClass("present");
+      } else if (currentDay.$H > i) {
+        hours[i - 6].addClass("past");
+      } else if (currentDay.$H < i) {
+        hours[i - 6].addClass("future");
+        console.log(hours[i]);
+      }
+    }
+  }
 
   blockColor();
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-  
+
   function retreiveData() {
     const storageKeys = Object.keys(localStorage);
     for (let i = 0; i < storageKeys.length; i++) {
-      const divId = $('#' + storageKeys[i]);
+      const divId = $("#" + storageKeys[i]);
       storedUserInput = JSON.parse(localStorage.getItem(storageKeys[i]));
-      divId.children('.col-8.description').html(storedUserInput)
-    };
-  };
+      divId.children(".col-8.description").html(storedUserInput);
+    }
+  }
 
   // TODO: Add code to display the current date in the header of the page.
   function displayCurrentDay() {

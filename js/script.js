@@ -50,44 +50,12 @@ $(function () {
 
   retreiveData();
 
-  // const hours = [
-  //   hour6a.time = dayjs().hour(6),
-  //   hour7a.time = dayjs().hour(7),
-  //   hour8a.time = dayjs().hour(8),
-  //   hour9a.time = dayjs().hour(9),
-  //   hour10a.time = dayjs().hour(10),
-  //   hour11a.time = dayjs().hour(11),
-  //   hour12p.time = dayjs().hour(12),
-  //   hour1p.time = dayjs().hour(13),
-  //   hour2p.time = dayjs().hour(14),
-  //   hour3p.time = dayjs().hour(15),
-  //   hour4p.time = dayjs().hour(16),
-  //   hour5p.time = dayjs().hour(17),
-  //   hour6p.time = dayjs().hour(18),
-  //   hour7p.time = dayjs().hour(19),
-  //   hour8p.time = dayjs().hour(20),
-  //   hour9p.time = dayjs().hour(21),
-  //   hour10p.time = dayjs().hour(22)
-  // ];
-
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-
-
-  function retreiveData() {
-    const storageKeys = Object.keys(localStorage);
-    for (let i = 0; i < storageKeys.length; i++) {
-      const divId = $('#' + storageKeys[i]);
-      storedUserInput = JSON.parse(localStorage.getItem(storageKeys[i]));
-      divId.children('.col-8.description').html(storedUserInput)
-    };
-    
-  };
-
 
   saveBtn.click(function saveInfo() {
     const saveBtnRef = $(this);
@@ -109,7 +77,6 @@ $(function () {
     );
     localStorage.setItem(hourCont.hour, JSON.stringify(hourCont.input));
 
-    // retrieveSavedData(hourCont, saveBtnRef);
   });
 
   // TODO: Add code to apply the past, present, or future class to each time
@@ -131,43 +98,21 @@ $(function () {
         };
       };
   };
-      
 
-  //     if (currentDay.$H === dayjs().hour(6).$H) {
-  //       hour6a.addClass("present");
-  //     } else if (currentDay.$H > dayjs().hour(6).$H) {
-  //       hour6a.addClass("past");
-  //     } else if (currentDay.$H < dayjs().hour(6).$H) {
-  //       hour6a.addClass("future");
-  //     }
-
-  //     if (currentDay.$H === dayjs().hour(7).$H) {
-  //       hour7a.addClass("present");
-  //     } else if (currentDay.$H > dayjs().hour(7).$H) {
-  //       hour7a.addClass("past");
-  //     } else if (currentDay.$H < dayjs().hour(7).$H) {
-  //       hour7a.addClass("future");
-  //     }
-
-  //     if (currentDay.$H === dayjs().hour(8).$H) {
-  //       hour8a.addClass("present");
-  //     } else if (currentDay.$H > dayjs().hour(8).$H) {
-  //       hour8a.addClass("past");
-  //     } else if (currentDay.$H < dayjs().hour(8).$H) {
-  //       hour8a.addClass("future");
-  //     }
-  // }
   blockColor();
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-  function retrieveSavedData(hourCont, saveBtnRef) {
-    storedUserInput = JSON.parse(localStorage.getItem(hourCont.hour));
-    saveBtnRef.siblings(".col-8.description").html(storedUserInput);
-
-    console.log(storedUserInput);
-  }
+  
+  function retreiveData() {
+    const storageKeys = Object.keys(localStorage);
+    for (let i = 0; i < storageKeys.length; i++) {
+      const divId = $('#' + storageKeys[i]);
+      storedUserInput = JSON.parse(localStorage.getItem(storageKeys[i]));
+      divId.children('.col-8.description').html(storedUserInput)
+    };
+  };
 
   // TODO: Add code to display the current date in the header of the page.
   function displayCurrentDay() {

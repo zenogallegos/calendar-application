@@ -1,6 +1,6 @@
-# 05 Third-Party APIs: Work Day Scheduler
+# Work Day Scheduler
 
-## Task
+## About
 
 Create a simple calendar application that allows a user to save events for hours in the day. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery. The application also utilizes day.js and bootstrap. The user can input text on the hourly sections and can save their input with the save button on the right of each hour bar. The content saves to local storage and is retrieved on page refresh
 
